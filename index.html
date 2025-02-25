@@ -78,7 +78,6 @@
 
         <div class="section-title">
           <h2>About</h2>
-          <p>目前我就讀東吳大學資料科學系二年級</p>
         </div>
 
         <div class="row">
@@ -88,9 +87,7 @@
           <div class="col-lg-8 pt-4 pt-lg-0 content" data-aos="fade-left">
             <h3>Data Scientist &amp; Backend Engineer</h3>
             <p class="fst-italic">
-              本身對於數據分析、平台網頁建置、IOT、人工智慧有興趣。除了系上所學，
-              我也會主動涉略不同的技術將所學與生活做結合，與同儕進行一些小的專案來解決生活上的不便或需
-              求，這些讓我們可以透過有趣的專案從中學習
+              I am Chia-En Wu, a data engineer passionate about distributed systems, cloud computing, and hands-on problem-solving. I enjoy applying programming to optimize data processing, enhance system efficiency, and tackle real-world challenges through practical implementation.
             </p>
             <div class="row">
               <div class="col-lg-6">
@@ -103,7 +100,7 @@
               </div>
               <div class="col-lg-6">
                 <ul>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Age:</strong> <span>22</span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong>Age:</strong> <span>23</span></li>
                   <li><i class="bi bi-chevron-right"></i> <strong>Degree:</strong> <span>B.B.A. in Big Data Management</span></li>
                   <li><i class="bi bi-chevron-right"></i> <strong>University:</strong> <span>Soochow University</span></li>
                 </ul>
@@ -319,6 +316,34 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      console.log('DOM Loaded, searching for resume items');
+      const resumeItems = document.querySelectorAll('.resume-item');
+      console.log(`Found ${resumeItems.length} resume items`);
+      
+      resumeItems.forEach(item => {
+        console.log('Processing resume item:', item);
+        
+        const pixelCard = document.createElement('div');
+        pixelCard.classList.add('pixel-card');
+        
+        // Wrap the item in the pixel card
+        const itemParent = item.parentNode;
+        itemParent.insertBefore(pixelCard, item);
+        pixelCard.appendChild(item);
+        
+        console.log('Trying to create PixelCard');
+        try {
+          const card = new PixelCard(pixelCard, { variant: 'pink' });
+          console.log('PixelCard created successfully:', card);
+        } catch (error) {
+          console.error('Error creating PixelCard:', error);
+        }
+      });
+    });
+  </script>
 
 </body>
 

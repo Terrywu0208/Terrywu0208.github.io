@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026 Summer Internship Links - Open All Links</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+  
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Share Tech Mono', 'Courier New', 'Consolas', 'Monaco', monospace;
+    background: #0a0a0a;
+    background-image: 
+      radial-gradient(circle at 20% 50%, rgba(0, 255, 0, 0.03) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, rgba(0, 255, 255, 0.03) 0%, transparent 50%);
+    min-height: 100vh;
+    padding: 20px;
+    line-height: 1.6;
+    color: #00ff00;
+    overflow-x: hidden;
+  }
+
+  /* Scanline effect */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      transparent 50%,
+      rgba(0, 255, 0, 0.03) 50%
+    );
+    background-size: 100% 4px;
+    pointer-events: none;
+    z-index: 1000;
+    animation: scanline 8s linear infinite;
+  }
+
+  @keyframes scanline {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(4px); }
+  }
+
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    background: rgba(0, 0, 0, 0.8);
+    border: 2px solid #00ff00;
+    box-shadow: 
+      0 0 20px rgba(0, 255, 0, 0.5),
+      inset 0 0 20px rgba(0, 255, 0, 0.1);
+    padding: 30px;
+    animation: fadeIn 0.8s ease-in, glow 2s ease-in-out infinite alternate;
+    position: relative;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes glow {
+    from {
+      box-shadow: 
+        0 0 20px rgba(0, 255, 0, 0.5),
+        inset 0 0 20px rgba(0, 255, 0, 0.1);
+    }
+    to {
+      box-shadow: 
+        0 0 30px rgba(0, 255, 0, 0.8),
+        inset 0 0 30px rgba(0, 255, 0, 0.2);
+    }
+  }
+
+  /* Terminal prompt style */
+  .terminal-prompt {
+    color: #00ff00;
+    font-weight: bold;
+  }
+
+  h2 {
+    color: #00ff00;
+    font-size: 28px;
+    margin-bottom: 25px;
+    text-align: center;
+    text-shadow: 
+      0 0 10px rgba(0, 255, 0, 0.8),
+      0 0 20px rgba(0, 255, 0, 0.5);
+    letter-spacing: 2px;
+    position: relative;
+  }
+
+  h2::before {
+    content: '> ';
+    color: #00ff00;
+  }
+
+  h2::after {
+    content: '_';
+    animation: blink 1s infinite;
+    color: #00ff00;
+  }
+
+  @keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+  }
+
+  .batch-selector {
+    margin-bottom: 25px;
+    padding: 20px;
+    background: rgba(0, 20, 0, 0.5);
+    border: 1px solid #00ff00;
+    box-shadow: 
+      0 0 10px rgba(0, 255, 0, 0.3),
+      inset 0 0 10px rgba(0, 255, 0, 0.1);
+    position: relative;
+  }
+
+  .batch-selector::before {
+    content: '[BATCH_SELECTOR]';
+    position: absolute;
+    top: 5px;
+    left: 10px;
+    font-size: 10px;
+    color: #00ff00;
+    opacity: 0.6;
+  }
+
+  .batch-selector label {
+    display: block;
+    color: #00ff00;
+    margin-bottom: 12px;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .batch-selector label::before {
+    content: '$ ';
+    color: #00ff00;
+  }
+
+  .batch-selector select {
+    width: 100%;
+    padding: 12px;
+    font-size: 14px;
+    border: 1px solid #00ff00;
+    border-radius: 0;
+    background: rgba(0, 0, 0, 0.8);
+    color: #00ff00;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Share Tech Mono', monospace;
+    box-shadow: 0 0 5px rgba(0, 255, 0, 0.3);
+  }
+
+  .batch-selector select:hover {
+    background: rgba(0, 20, 0, 0.8);
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+  }
+
+  .batch-selector select:focus {
+    outline: none;
+    border-color: #00ffff;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.6);
+    color: #00ffff;
+  }
+
+  .batch-selector select option {
+    background: #000;
+    color: #00ff00;
+  }
+
+  .batch-info-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    margin-top: 15px;
+  }
+
+  .batch-info {
+    color: #00ffff;
+    font-size: 12px;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.6);
+    border-left: 2px solid #00ffff;
+    font-family: 'Share Tech Mono', monospace;
+    flex: 1;
+  }
+
+  .batch-info::before {
+    content: "[INFO] ";
+    color: #00ffff;
+  }
+
+  .url-list {
+    margin-top: 25px;
+    max-height: 500px;
+    overflow-y: auto;
+    padding-right: 10px;
+    border: 1px solid #00ff00;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 15px;
+  }
+
+  .url-list::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .url-list::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.8);
+  }
+
+  .url-list::-webkit-scrollbar-thumb {
+    background: #00ff00;
+    box-shadow: 0 0 5px rgba(0, 255, 0, 0.8);
+  }
+
+  .url-list::-webkit-scrollbar-thumb:hover {
+    background: #00ffff;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
+  }
+
+  .url-item {
+    padding: 12px 15px;
+    margin: 8px 0;
+    background: rgba(0, 20, 0, 0.3);
+    border-left: 3px solid #00ff00;
+    border-bottom: 1px solid rgba(0, 255, 0, 0.3);
+    transition: all 0.3s ease;
+    font-family: 'Share Tech Mono', monospace;
+    position: relative;
+  }
+
+  .url-item::before {
+    content: '> ';
+    color: #00ff00;
+    font-weight: bold;
+  }
+
+  .url-item:hover {
+    background: rgba(0, 40, 0, 0.5);
+    border-left-color: #00ffff;
+    box-shadow: 
+      0 0 10px rgba(0, 255, 0, 0.4),
+      inset 0 0 10px rgba(0, 255, 0, 0.1);
+    transform: translateX(5px);
+  }
+
+  .url-item a {
+    color: #00ff00;
+    text-decoration: none;
+    word-break: break-all;
+    display: block;
+    transition: color 0.3s ease;
+    font-size: 13px;
+  }
+
+  .url-item a:hover {
+    color: #00ffff;
+    text-shadow: 0 0 5px rgba(0, 255, 255, 0.8);
+  }
+
+  .batch-selector button {
+    padding: 10px 20px;
+    background: rgba(0, 0, 0, 0.8);
+    color: #00ff00;
+    border: 2px solid #00ff00;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: bold;
+    font-family: 'Share Tech Mono', monospace;
+    transition: all 0.3s ease;
+    overflow: hidden;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 
+      0 0 10px rgba(0, 255, 0, 0.5),
+      inset 0 0 10px rgba(0, 255, 0, 0.1);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  button {
+    padding: 15px 35px;
+    background: rgba(0, 0, 0, 0.8);
+    color: #00ff00;
+    border: 2px solid #00ff00;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    font-family: 'Share Tech Mono', monospace;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    box-shadow: 
+      0 0 10px rgba(0, 255, 0, 0.5),
+      inset 0 0 10px rgba(0, 255, 0, 0.1);
+  }
+
+  button::before {
+    content: '';
+  }
+
+  button::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(0, 255, 0, 0.2),
+      transparent
+    );
+    transition: left 0.5s;
+  }
+
+  button:hover::after {
+    left: 100%;
+  }
+
+  .batch-selector button:hover {
+    background: rgba(0, 20, 0, 0.8);
+    border-color: #00ffff;
+    color: #00ffff;
+    box-shadow: 
+      0 0 20px rgba(0, 255, 255, 0.8),
+      inset 0 0 20px rgba(0, 255, 255, 0.2);
+    transform: scale(1.05);
+  }
+
+  button:hover {
+    background: rgba(0, 20, 0, 0.8);
+    border-color: #00ffff;
+    color: #00ffff;
+    box-shadow: 
+      0 0 20px rgba(0, 255, 255, 0.8),
+      inset 0 0 20px rgba(0, 255, 255, 0.2);
+    transform: translateY(-2px);
+  }
+
+  .batch-selector button:active {
+    transform: scale(0.98);
+    box-shadow: 
+      0 0 10px rgba(0, 255, 0, 0.5),
+      inset 0 0 10px rgba(0, 255, 0, 0.1);
+  }
+
+  .batch-selector button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+    border-color: #666;
+    color: #666;
+  }
+
+  button:active {
+    transform: translateY(0);
+    box-shadow: 
+      0 0 10px rgba(0, 255, 0, 0.5),
+      inset 0 0 10px rgba(0, 255, 0, 0.1);
+  }
+
+  button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+    border-color: #666;
+    color: #666;
+  }
+
+  .no-data {
+    color: #ff6600;
+    text-align: center;
+    padding: 40px;
+    font-size: 14px;
+    font-family: 'Share Tech Mono', monospace;
+  }
+
+  .no-data::before {
+    content: '[ERROR] ';
+    color: #ff6600;
+  }
+
+  .notice-box {
+    margin-top: 25px;
+    padding: 20px;
+    background: rgba(20, 10, 0, 0.5);
+    border: 1px solid #ff6600;
+    box-shadow: 
+      0 0 10px rgba(255, 102, 0, 0.3),
+      inset 0 0 10px rgba(255, 102, 0, 0.1);
+    position: relative;
+  }
+
+  .notice-box::before {
+    content: '[WARNING]';
+    position: absolute;
+    top: 5px;
+    left: 10px;
+    font-size: 10px;
+    color: #ff6600;
+    opacity: 0.6;
+  }
+
+  .notice-box h3 {
+    color: #ff6600;
+    font-size: 16px;
+    margin-bottom: 12px;
+    margin-top: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .notice-box h3::before {
+    content: "> ";
+    color: #ff6600;
+  }
+
+  .notice-box p {
+    color: #ffaa00;
+    font-size: 13px;
+    line-height: 1.8;
+    margin-bottom: 10px;
+    font-family: 'Share Tech Mono', monospace;
+  }
+
+  .notice-box ul {
+    color: #ffaa00;
+    font-size: 12px;
+    margin-left: 20px;
+    margin-top: 10px;
+    line-height: 2;
+    font-family: 'Share Tech Mono', monospace;
+  }
+
+  .notice-box li {
+    margin-bottom: 5px;
+  }
+
+  .notice-box li::before {
+    content: "• ";
+    color: #ff6600;
+  }
+
+  .loading {
+    text-align: center;
+    padding: 20px;
+    color: #00ff00;
+    font-size: 14px;
+    font-family: 'Share Tech Mono', monospace;
+  }
+
+  .loading::before {
+    content: '[LOADING] ';
+    color: #00ff00;
+  }
+
+  @media (max-width: 768px) {
+    .container {
+      padding: 20px;
+    }
+
+    h2 {
+      font-size: 20px;
+    }
+
+    .batch-info-container {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 10px;
+    }
+
+    .batch-selector button {
+      padding: 8px 15px;
+      font-size: 11px;
+      letter-spacing: 0.5px;
+      width: 100%;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px 20px;
+      font-size: 14px;
+    }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <h2>2026 Summer Internship Links</h2>
+
+  <div class="batch-selector">
+    <label for="batchSelect">SELECT_BATCH</label>
+    <select id="batchSelect">
+      <option value="">[LOADING...]</option>
+    </select>
+    <div class="batch-info-container">
+      <div class="batch-info" id="batchInfo"></div>
+      <button id="openAllBtn" style="display: none;">EXECUTE_ALL_LINKS</button>
+    </div>
+  </div>
+
+  <div class="url-list" id="urlList"></div>
+
+  <div class="notice-box">
+    <h3>Important Notice</h3>
+    <p>If clicking the button fails to automatically open all links, your browser may be blocking pop-ups. Please follow these steps:</p>
+    <ul>
+      <li><strong>Chrome/Edge:</strong> Click the pop-up icon on the right side of the address bar → Select "Always allow pop-ups from this site"</li>
+      <li><strong>Firefox:</strong> Click the lock icon on the left side of the address bar → Permissions → Allow pop-ups</li>
+      <li><strong>Safari:</strong> Preferences → Websites → Pop-up Windows → Select "Allow"</li>
+    </ul>
+    <p style="margin-top: 10px;"><strong>Alternatively</strong>, you can manually click the links in the list above to open them one by one.</p>
+  </div>
+</div>
+
+<script>
+// Get batch ID from URL parameters, or use localStorage to remember last selection
+function getBatchId() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const batchId = urlParams.get('batch');
+  if (batchId) {
+    localStorage.setItem('lastBatchId', batchId);
+    return batchId;
+  }
+  // If no URL parameter, use the record in localStorage
+  return localStorage.getItem('lastBatchId') || 'latest';
+}
+
+// Load JSON data
+async function loadData() {
+  try {
+    const response = await fetch('data/data.json?t=' + Date.now()); // Add timestamp to avoid cache
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error('[ERROR] Failed to load data:', error);
+    // Display error message to user
+    const urlList = document.getElementById('urlList');
+    if (urlList) {
+      const isLocalFile = window.location.protocol === 'file:';
+      let errorMessage = '';
+      
+      if (isLocalFile) {
+        // Local file system error
+        errorMessage = `
+          <div class="no-data" style="text-align: left; padding: 20px;">
+            <div style="margin-bottom: 15px;">[ERROR] Cannot load data/data.json</div>
+            <div style="font-size: 12px; line-height: 1.8; color: #ffaa00;">
+              <div style="margin-bottom: 10px;"><strong>Reason:</strong> Browser security policy prevents direct reading of local files</div>
+              <div style="margin-bottom: 15px;"><strong>Solutions:</strong></div>
+              <div style="margin-left: 20px; margin-bottom: 10px;">
+                <strong>Method 1 (Recommended):</strong> Use a local server<br>
+                <code style="color: #00ff00; background: rgba(0,0,0,0.5); padding: 2px 5px;">python -m http.server 8000</code><br>
+                Then open <code style="color: #00ff00; background: rgba(0,0,0,0.5); padding: 2px 5px;">http://localhost:8000/openall.html</code> in your browser
+              </div>
+              <div style="margin-left: 20px; margin-bottom: 10px;">
+                <strong>Method 2:</strong> Deploy to GitHub Pages and it will work normally
+              </div>
+            </div>
+          </div>
+        `;
+      } else {
+        // GitHub Pages or other HTTP server error
+        errorMessage = `
+          <div class="no-data" style="text-align: left; padding: 20px;">
+            <div style="margin-bottom: 15px;">[ERROR] Cannot load data/data.json</div>
+            <div style="font-size: 12px; line-height: 1.8; color: #ffaa00;">
+              <div style="margin-bottom: 10px;"><strong>Possible causes:</strong></div>
+              <div style="margin-left: 20px; margin-bottom: 10px;">
+                • data/data.json file does not exist or path is incorrect<br>
+                • Network connection issue<br>
+                • Server configuration problem
+              </div>
+              <div style="margin-top: 15px; color: #00ffff;">
+                [INFO] Please ensure data/data.json file has been correctly uploaded to GitHub Pages
+              </div>
+            </div>
+          </div>
+        `;
+      }
+      
+      urlList.innerHTML = errorMessage;
+    }
+    return { batches: [] };
+  }
+}
+
+// Format time
+function formatTime(timestamp) {
+  const date = new Date(timestamp);
+  return date.toLocaleString('en-US', {
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit'
+  });
+}
+
+// Display batch selector
+function populateBatchSelector(batches) {
+  const select = document.getElementById('batchSelect');
+  select.innerHTML = '';
+  
+  if (batches.length === 0) {
+    select.innerHTML = '<option value="">[NO_DATA]</option>';
+    return;
+  }
+  
+  // Add "latest" option
+  const latestOption = document.createElement('option');
+  latestOption.value = 'latest';
+  latestOption.textContent = '[LATEST_BATCH]';
+  select.appendChild(latestOption);
+  
+  // Add historical batches (newest first)
+  batches.slice().reverse().forEach((batch, index) => {
+    const option = document.createElement('option');
+    option.value = batch.id.toString();
+    option.textContent = `BATCH_${batch.id} - ${formatTime(batch.timestamp)}`;
+    select.appendChild(option);
+  });
+  
+  // Set current selection
+  const currentBatchId = getBatchId();
+  if (currentBatchId === 'latest' || !batches.find(b => b.id.toString() === currentBatchId)) {
+    select.value = 'latest';
+  } else {
+    select.value = currentBatchId;
+  }
+  
+  // Listen for selection changes
+  select.addEventListener('change', (e) => {
+    const selectedId = e.target.value;
+    if (selectedId === 'latest') {
+      localStorage.setItem('lastBatchId', 'latest');
+      window.history.replaceState({}, '', window.location.pathname);
+    } else {
+      localStorage.setItem('lastBatchId', selectedId);
+      window.history.replaceState({}, '', `?batch=${selectedId}`);
+    }
+    displayBatch(batches, selectedId);
+  });
+}
+
+// Display batch content
+function displayBatch(batches, batchId, autoOpen = false) {
+  const urlList = document.getElementById('urlList');
+  const batchInfo = document.getElementById('batchInfo');
+  const openAllBtn = document.getElementById('openAllBtn');
+  
+  let selectedBatch;
+  
+  if (batchId === 'latest' || batchId === '') {
+    // Display the latest batch
+    selectedBatch = batches.length > 0 ? batches[batches.length - 1] : null;
+  } else {
+    // Display specified batch
+    selectedBatch = batches.find(b => b.id.toString() === batchId);
+  }
+  
+  if (!selectedBatch || !selectedBatch.urls || selectedBatch.urls.length === 0) {
+    urlList.innerHTML = '<div class="no-data">[NO_LINKS_IN_BATCH]</div>';
+    batchInfo.textContent = '';
+    openAllBtn.style.display = 'none';
+    return;
+  }
+  
+  // Display batch information
+  batchInfo.textContent = `CREATED: ${formatTime(selectedBatch.timestamp)} | LINKS: ${selectedBatch.urls.length}`;
+  
+  // Display link list
+  urlList.innerHTML = '';
+  selectedBatch.urls.forEach((url, index) => {
+    const urlItem = document.createElement('div');
+    urlItem.className = 'url-item';
+    const paddedIndex = String(index + 1).padStart(3, '0');
+    urlItem.innerHTML = `<a href="${url}" target="_blank">[${paddedIndex}] ${url}</a>`;
+    urlList.appendChild(urlItem);
+  });
+  
+  // Function to open all links
+  function openAllLinks() {
+    if (!selectedBatch || !selectedBatch.urls || selectedBatch.urls.length === 0) {
+      return false;
+    }
+    
+    const totalUrls = selectedBatch.urls.length;
+    let blockedCount = 0;
+    
+    // Use small delay to avoid browser blocking pop-ups, but ensure immediate trigger
+    selectedBatch.urls.forEach((url, index) => {
+      setTimeout(() => {
+        const newWindow = window.open(url, '_blank');
+        
+        // Check if blocked
+        if (!newWindow) {
+          // window.open returns null means blocked
+          blockedCount++;
+          console.warn(`[ERROR] Popup blocked for: ${url}`);
+        } else {
+          // Further check: try to access window properties
+          try {
+            // If window is blocked, accessing some properties may fail
+            const test = newWindow.closed;
+          } catch (e) {
+            blockedCount++;
+            console.warn(`[ERROR] Popup blocked for: ${url}`);
+          }
+        }
+      }, index * 100); // Each link spaced 100ms apart to avoid blocking
+    });
+    
+    return blockedCount === 0;
+  }
+  
+  // Set button click event
+  openAllBtn.onclick = () => {
+    openAllBtn.disabled = true;
+    openAllBtn.textContent = '[EXECUTING...]';
+    
+    openAllLinks();
+    
+    // Restore button state after 500ms
+    setTimeout(() => {
+      openAllBtn.disabled = false;
+      openAllBtn.textContent = 'EXECUTE_ALL_LINKS';
+    }, 500);
+  };
+  
+  // Button always displayed
+  openAllBtn.style.display = 'block';
+  openAllBtn.disabled = false;
+  openAllBtn.textContent = 'EXECUTE_ALL_LINKS';
+  
+  // If it's the first load (autoOpen = true), automatically execute opening all links
+  if (autoOpen) {
+    // Delay a bit before executing to ensure page is fully loaded
+    setTimeout(() => {
+      openAllLinks();
+    }, 100);
+  }
+}
+
+// Initialize
+async function init() {
+  const data = await loadData();
+  const batches = data.batches || [];
+  
+  populateBatchSelector(batches);
+  const currentBatchId = getBatchId();
+  // Auto-open on first load (autoOpen = true)
+  displayBatch(batches, currentBatchId, true);
+}
+
+// Initialize on page load
+init();
+</script>
+
+</body>
+</html>

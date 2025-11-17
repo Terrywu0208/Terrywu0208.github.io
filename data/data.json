@@ -1,3 +1,46 @@
 {
-  "batches": []
+  "batches": [
+    {
+      "id": 1,
+      "timestamp": "2025-01-15T08:00:00",
+      "urls": [
+        "https://www.google.com/",
+        "https://www.microsoft.com/",
+        "https://www.apple.com/",
+        "https://www.amazon.com/",
+        "https://www.meta.com/"
+      ]
+    },
+    {
+      "id": 2,
+      "timestamp": "2025-01-15T14:00:00",
+      "urls": [
+        "https://www.python.org/",
+        "https://www.docker.com/",
+        "https://kubernetes.io/",
+        "https://www.terraform.io/"
+      ]
+    },
+    {
+      "id": 3,
+      "timestamp": "2025-01-15T20:00:00",
+      "urls": [
+        "https://github.com/",
+        "https://stackoverflow.com/",
+        "https://www.kaggle.com/",
+        "https://www.youtube.com/"
+      ]
+    },
+    {
+      "id": 4,
+      "timestamp": "2025-11-16T22:23:36.805846",
+      "urls": [
+        "https://www.google.com/",
+        "https://www.microsoft.com/",
+        "https://www.apple.com/",
+        "https://github.com/",
+        "https://stackoverflow.com/"
+      ]
+    }
+  ]
 }
